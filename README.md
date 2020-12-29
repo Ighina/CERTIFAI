@@ -1,7 +1,7 @@
 # CERTIFAI
 A python implementation of CERTIFAI framework for machine learning models' explainability as discussed in https://www.aies-conference.com/2020/wp-content/papers/099.pdf 
 
-To quote the algorithm:
+To quote the framework:
 Shubham Sharma, Jette Henderson, and Joydeep Ghosh. 2020. CERTIFAI:
 A Common Framework to Provide Explanations and Analyse the Fairness
 and Robustness of Black-box Models. In Proceedings of the 2020 AAAI/ACM
