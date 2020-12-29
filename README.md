@@ -97,3 +97,6 @@ certifai_instance.check_feature_importance(sensibility = 5)
 certifai_instance.check_feature_importance(sensibility = {'continuous_feature_name_1': 5, 'continuous_feature_name_2': 10})
 ```
 Similarly to the *check_fairness* method, the results can be visualised via the *visualise_results* argument being set  to True.
+
+## Examples
+An example of the use of CERTIFAI class is included in ModelExCERTIFAI.py. The example script includes also the training of a classification model on the drug200 dataset with PyTorch and PyLightning. To run the script just run it with python after having installed all dependencies.
