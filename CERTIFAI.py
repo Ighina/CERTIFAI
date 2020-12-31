@@ -694,6 +694,95 @@ class CERTIFAI:
             normalisation = None,
             fixed = None,
             verbose = False):
+        '''Generate the counterfactuals for the defined dataset under the
+        trained model. The whole process is described in detail in the
+        original paper.
+        
+        Arguments:
+            Inputs:
+                model (torch.nn.module, keras.model or sklearn.model): the trained model
+                that will be used to check that original samples and their
+                counterfactuals yield different predictins.
+                
+                x (pandas.DataFrame or numpy.ndarray): the referenced 
+                dataset, i.e. the samples for which creating counterfactuals.
+                If no dataset is provided, the function assumes that the 
+                dataset has been previously provided to the class during
+                instantiation (see above) and that it is therefore contained
+                in the attribute 'tab_dataset'.
+                
+                model_input (torch.tensor or numpy.ndarray): the dataset
+                for which counterfactuals are generated, but having the form
+                required by the trained model to generate predictions based
+                on it. If nothing is provided, the model input will be automatically
+                generated for each dataset's observation (following the torch
+                argument in order to create the correct input).
+                
+                pytorch (bool): whether the passed model is a torch.nn.module
+                instance (if pytorch is set to True) or a keras/sklearn.model one.
+                
+                classification (bool): whether the task of the model is to 
+                classify (classification = True) or to perform regression.
+                
+                generations (int): the number of generations, i.e. how many
+                times the algorithm will run over each data sample in order to 
+                generate the relative counterfactuals. In the original paper, the
+                value of this parameter was found for each separate example via
+                grid search. Computationally, increasing the number of generations
+                linearly increases the time of execution.
+                
+                distance (str): the type of distance function to be used in
+                comparing original samples and counterfactuals. The default
+                is "automatic", meaning that the distance function will be guessed,
+                based on the form of the input data. Other options are 
+                "SSIM" (for images), "L1" or "L2".
+                
+                constrained (bool): whether to constrain the values of each
+                generated feature to be in the range of the observed values
+                for that feature in the original dataset.
+                
+                class_specific (int): if classification is True, this option
+                can be used to further specify that we want to generate 
+                counterfactuals just for samples yielding a particular prediction
+                (whereas the relative integer is the index of the predicted class
+                 according to the trained model). This is useful, e.g., if the 
+                analysis needs to be restricted on data yielding a specific
+                prediction. Default is None, meaning that all data will be used
+                no matter what prediction they yield.
+                
+                select_retain (int): hyperparameter specifying the (max) amount
+                of counterfactuals to be retained after the selection step
+                of the algorithm.
+                
+                gen_retain (int): hyperparameter specifying the (max) amount
+                of counterfactuals to be retained at each generation.
+                
+                final_k (int): hyperparameter specifying the (max) number
+                of counterfactuals to be kept for each data sample.
+                
+                normalisation (str) ["standard", "max_scaler"]: the
+                normalisation technique used for the data at hand. Default
+                is None, while "standard" and "max_scaler" techniques are
+                the other possible options. According to the chosen value
+                different random number generators are used. This option is
+                useful to speed up counterfactuals' generation if the original
+                data underwent some normalisation process or are in some
+                specific range.
+                
+                fixed (list): a list of features to be kept fixed in counterfactual generation 
+                (i.e. all counterfactual will have the same value as the given sample for that
+                feature). If no list is provided, then no feature will be kept fixed.
+            
+                verbose (bool): whether to print the generation status via 
+                a progression bar.
+                
+            Outputs
+                None: the function does not output any value but it populates
+                the result attribute of the instance with a list of tuples each
+                containing the original data sample, the generated  counterfactual(s)
+                for that data sample and their distance(s).
+        '''
+        
         
         if x is None:
             assert self.tab_dataset is not None, 'Either an input is passed into\
