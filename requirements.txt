@@ -4,3 +4,4 @@ torch
 sklearn
 skimage
 tqdm
+pytorch_lightning
