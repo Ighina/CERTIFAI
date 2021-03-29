@@ -9,6 +9,21 @@ Conference on AI, Ethics, and Society (AIES ’20), February 7–8, 2020, New
 York, NY, USA. ACM, New York, NY, USA, 7 pages. https://doi.org/10.1145/
 3375627.3375812
 
+## Installation
+Clone this repository and change the working directory to be inside the cloned repository.
+To install the dependencies needed by the repository, either use pip:
+```
+pip install -r requirements.txt
+```
+Otherwise you can use anaconda to create a virtual environment and install the libraries there:
+```
+conda create -n certifai --file requirements.txt
+conda activate certifai
+```
+
+You're ready to go.
+
+
 ## Background
 The CERTIFAI.py module contains the CERTIFAI class, implementing the CERTIFAI framework illustrated in the referenced work. The framework aims at building a model-agnostic interpretation framework, based on the generation of "counterfactuals", i.e. data points that are as close as possible to actual data samples but for which the model output a different prediction. Different analyses over these counterfactuals can then be used for different purposes, as described in more details in the original paper and below in the use cases.
 
