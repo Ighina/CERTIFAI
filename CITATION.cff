@@ -1,0 +1,65 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  CERTIFAI: A Common Framework to Provide
+  Explanations and Analyse the Fairness and
+  Robustness of Black-box Models
+message: >-
+  A python implementation of CERTIFAI framework for
+  machine learning models' explainability.
+type: software
+authors:
+  - given-names: Shubham
+    family-names: Sharma
+    email: shubham_sharma@utexas.edu
+    affiliation: >-
+      Department of Electrical and Computer
+      Engineering, University of Texas at Austin
+  - given-names: Jette
+    family-names: Henderson
+    email: jhenderson@cognitivescale.com
+    affiliation: CognitiveScale
+  - given-names: Joydeep
+    family-names: Ghosh
+    email: jghosh@utexas.edu
+    affiliation: CognitiveScale
+identifiers:
+  - type: doi
+    value: 10.1145/3375627.3375812
+repository-code: 'https://github.com/Ighina/CERTIFAI'
+abstract: >-
+  Concerns within the machine learning community and
+  external pressures from regulators over the
+  vulnerabilities of machine learning algorithms have
+  spurred on the fields of explainability,
+  robustness, and fairness. Often, issues in
+  explainability, robustness, and fairness are
+  confined to their specific sub-fields and few tools
+  exist for model developers to use to simultaneously
+  build their modeling pipelines in a transparent,
+  accountable, and fair way. This can lead to a
+  bottleneck on the model developer’s side as they
+  must juggle multiple methods to evaluate their
+  algorithms. In this paper, we present a single
+  framework for analyzing the robustness, fairness,
+  and explainability of a classifier. The framework,
+  which is based on the generation of counterfactual
+  explanations1 through a custom genetic algorithm,
+  is flexible, model-agnostic, and does not require
+  access to model internals. The framework allows the
+  user to calculate robustness and fairness scores
+  for individual models and generate explanations for
+  individual predictions which provide a means for
+  actionable recourse (changes to an input to help
+  get a desired outcome). This is the first time that
+  a unified tool has been developed to address three
+  key issues pertaining
+keywords:
+  - Responsible Artificial Intelligence
+  - explainability
+  - fairness
+  - robustness
+  - machine learning
+date-released: '2020-12-29'
